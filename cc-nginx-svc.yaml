@@ -10,6 +10,7 @@ spec:
   selector:
     app: nginx
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
+    - port: 80        # Service Port
+      targetPort: 80  # Pod의 containerPort
+
+      # nodePort: 30100 # NodePort 지정 (30000-32767 범위 내)
