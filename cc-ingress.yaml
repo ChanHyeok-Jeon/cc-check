@@ -7,6 +7,8 @@ metadata:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/subnets: subnet-039e4abf1eb4dd567,subnet-0808ff1863bf046da
+
 spec:
   rules:
     - host: ch-jeon.store
@@ -19,3 +21,4 @@ spec:
                 name: cc-nginx-svc
                 port:
                   number: 80
+
