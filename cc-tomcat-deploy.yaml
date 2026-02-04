@@ -48,7 +48,7 @@ spec:
 
       containers:
         - name: check-tomcat
-          image: 387721658341.dkr.ecr.ap-northeast-2.amazonaws.com/cc-tomcat:v2
+          image: 387721658341.dkr.ecr.ap-northeast-2.amazonaws.com/cc-tomcat:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -85,6 +85,7 @@ spec:
               port: 8080
             initialDelaySeconds: 70
             periodSeconds: 35
+
 
 
 
