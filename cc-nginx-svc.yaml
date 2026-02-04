@@ -7,10 +7,6 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
-  tls:
-    - hosts:
-        - ch-jeon.store
-      secretName: ch-jeon-tls
   rules:
     - host: ch-jeon.store
       http:
@@ -22,3 +18,4 @@ spec:
                 name: cc-nginx-svc
                 port:
                   number: 80
+
