@@ -1,21 +1,20 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: v1
+kind: Service
 metadata:
-  name: cc-ingress
+  name: cc-nginx-svc
   namespace: cc-frontend
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    # 이 annotation을 넣어야 CLB가 아닌 'NLB'가 생성됩니다.
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+  labels:
+    app: nginx
 spec:
-  ingressClassName: nginx
-  rules:
-    - host: ch-jeon.store
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: cc-nginx-svc
-                port:
-                  number: 80
+  type: LoadBalancer
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80        # Service Port
+      targetPort: 80  # Pod의 containerPort
 
+      # nodePort: 30100 # NodePort 지정 (30000-32767 범위 내)
