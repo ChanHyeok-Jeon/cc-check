@@ -4,9 +4,10 @@ metadata:
   name: cc-ingress
   namespace: cc-frontend
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
 spec:
-  ingressClassName: nginx
   rules:
     - host: ch-jeon.store
       http:
@@ -18,4 +19,3 @@ spec:
                 name: cc-nginx-svc
                 port:
                   number: 80
-
